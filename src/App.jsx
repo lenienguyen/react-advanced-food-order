@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ReactDOM from 'react-dom'
 import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals';
@@ -6,6 +6,7 @@ import Modal from './components/UI/Modal';
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/cart-provider';
 import CartContext from './store/cart-context';
+import Checkout from './components/Cart/Checkout';
 
 
 // Todo:
@@ -27,6 +28,7 @@ Handle loading & error states
 
 const App = () => {
   const cartCtx = useContext(CartContext)
+  const [showModal, setShowModal] = useState(false)
 
   const onAddItemHandler = (item) => {
     cartCtx.addItem(item)
@@ -34,9 +36,14 @@ const App = () => {
 
   return (
     <CartProvider>
-      {ReactDOM.createPortal(<Modal>
-        <Cart className="cart"/>
+
+      {/* {ReactDOM.createPortal(<Modal className="cart">
+        <Cart />
       </Modal>, document.getElementById('modal'))}
+
+      {ReactDOM.createPortal(<Modal className="cart">
+        <Checkout />
+      </Modal>, document.getElementById('modal'))} */}
 
       <Header />
       <Meals onClick={onAddItemHandler} />

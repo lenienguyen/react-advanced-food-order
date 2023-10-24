@@ -14,6 +14,55 @@ body {
   min-height: 100vh;
 }
 
+
+/* GLOBAL */
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  color: #ffc404;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffc404;
+  border: 1px solid #ffc404;
+  color: #1f1a09;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #ffab04;
+  border-color: #ffab04;
+  color: #1f1a09;
+}
+
+.text-button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffc404;
+}
+
+.text-button:hover,
+.text-button:active {
+  color: #ffab04;
+}
+
+
+
+
+
+
+/* Header */
 #main-header {
   display: flex;
   justify-content: space-between;
@@ -40,16 +89,9 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-h1 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  margin: 0;
-  color: #ffc404;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-}
 
+
+/* Meals */
 #meals {
   width: 90%;
   max-width: 70rem;
@@ -107,6 +149,13 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
+
+
+
+
+
+/* CART */
+
 .cart h2 {
   margin: 1rem 0;
 }
@@ -115,21 +164,6 @@ h1 {
   list-style: none;
   margin: 0.5rem 0;
   padding: 0;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.modal-actions .text-button {
-  color: #1d1a16;
-}
-
-.modal-actions .text-button:hover,
-.modal-actions .text-button:active {
-  color: #312c1d;
 }
 
 .cart-total {
@@ -178,6 +212,11 @@ h1 {
   color: #ffab04;
 }
 
+
+
+
+
+/* CONTROL FORM */
 .control {
   margin: 0.5rem 0;
   display: flex;
@@ -204,35 +243,12 @@ h1 {
   gap: 1rem;
 }
 
-.button {
-  font: inherit;
-  cursor: pointer;
-  background-color: #ffc404;
-  border: 1px solid #ffc404;
-  color: #1f1a09;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-}
 
-.button:hover,
-.button:active {
-  background-color: #ffab04;
-  border-color: #ffab04;
-  color: #1f1a09;
-}
 
-.text-button {
-  font: inherit;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #ffc404;
-}
 
-.text-button:hover,
-.text-button:active {
-  color: #ffab04;
-}
+
+
+/* MODAL */
 
 .modal {
   background-color: #e4ddd4;
@@ -243,11 +259,28 @@ h1 {
   width: 80%;
   max-width: 40rem;
   animation: fade-slide-up 0.3s ease-out forwards;
+  color: black;
 }
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.55);
 }
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-actions .text-button {
+  color: #1d1a16;
+}
+
+.modal-actions .text-button:hover,
+.modal-actions .text-button:active {
+  color: #312c1d;
+}
+
 
 @keyframes fade-slide-up {
   from {

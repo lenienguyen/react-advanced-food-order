@@ -13,11 +13,14 @@ const MealsList = props => {
         fetchMeals();
     }, [])
 
+    console.log('meals', meals)
+
     return (
         <div id="meals">
             {meals.map(meal => 
             <MealItem 
             key={meal.id}
+            id={meal.id}
             image={meal.image}
             name={meal.name}
             price={meal.price}
