@@ -9,10 +9,12 @@ const useHttps = () => {
         try {
             let res = await fetch(endpoint)
             if(!res.ok){
+                throw new Error('Something went wrong')
                 return;
             }
 
             let data = await res.json();
+            console.log('data', data)
 
             setData(data)
 

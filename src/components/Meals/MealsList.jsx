@@ -13,11 +13,10 @@ const MealsList = props => {
         fetchMeals();
     }, [])
 
-    console.log('meals', meals)
+    let content = <p>Found no meals</p>
 
-    return (
-        <div id="meals">
-            {meals.map(meal => 
+    if(meals.length > 0){
+        content = meals.map(meal => 
             <MealItem 
             key={meal.id}
             id={meal.id}
@@ -26,7 +25,22 @@ const MealsList = props => {
             price={meal.price}
             description={meal.description}
             />
-            )}
+        )
+    }
+
+    if(mealsError){
+        content = <p>{mealsError}</p>
+    }
+
+    /* if(isLoading){
+        content = <p>Loading...</p>
+    } */
+
+
+
+    return (
+        <div id="meals">
+            {content}
         </div>
     )
 }
