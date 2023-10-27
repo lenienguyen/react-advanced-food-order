@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react'
-import CartContext from '../../store/cart-context'
+import CartContext from '../../store/CartContext'
 import Button from '../UI/Button'
 
 const Checkout = () => {

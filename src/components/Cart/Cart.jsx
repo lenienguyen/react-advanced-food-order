@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from 'react'
-import CartContext from '../../store/cart-context'
+import CartContext from '../../store/CartContext'
 import CartItem from './CartItem'
 import Button from '../UI/Button'
 
@@ -18,7 +18,7 @@ const Cart = () => {
               key={item.id}
               name={item.name}
               price={item.price}
-              amount={item.amount}
+              quantity={item.quantity}
               />
             )
           })}

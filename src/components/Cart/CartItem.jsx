@@ -6,7 +6,7 @@ const CartItem = props => {
   return (
     <Fragment>
       <li className="cart-item">
-        <p>{props.name} - {props.amount} x ${price}</p>
+        <p>{props.name} - {props.quantity} x ${price}</p>
         <div className="cart-item-actions">
           <button>-</button> 1 <button>+</button>
         </div>

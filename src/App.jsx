@@ -1,29 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals';
-import Cart from './components/Cart/Cart';
-import CartProvider from './store/cart-provider';
-import CartContext from './store/cart-context';
+import { CartContextProvider } from './store/CartContext';
 
 
 const App = () => {
-  const cartCtx = useContext(CartContext)
-  const [cartisShown, setCartIsShown] = useState(false)
-
-  const onAddItemHandler = (item) => {
-    cartCtx.addItem(item)
-  }
 
   return (
-    <CartProvider>
-      
-      {cartisShown && <Cart />}
+    <CartContextProvider>
+      {/* {cartisShown && <Cart />} */}
 
       <Header />
 
-      <Meals onClick={onAddItemHandler} />
+      <Meals />
 
-    </CartProvider>
+    </CartContextProvider>
   );
 }
 
