@@ -1,14 +1,11 @@
 import React from 'react'
 
-const Button = props => {
+const Button = ({ children, textOnly, className, ...props }) => {
+  const btnClasses = textOnly ? `text-button ${className}` : 'button'
+
   return (
-    <button
-    type={props.type || 'button'}
-    className={`button ${props.className}`}
-    onClick={props.onClick}
-    disabled={props.disabled}
-    >
-        {props.children}
+    <button className={btnClasses} {...props}>
+        {children}
     </button>
   )
 }

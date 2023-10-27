@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import MealItem from './MealItem'
 import useHttps from '../../hooks/use-https'
 
 const MealsList = props => {
+
     const { 
         fetchData: fetchMeals, 
         data: meals, 
