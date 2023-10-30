@@ -8,7 +8,7 @@ const Meals = props => {
   
   useEffect(() => {
     const fetchMeals = async () => {
-      let res = await fetch('/backend/data/available-meals.json')
+      let res = await fetch('http://localhost:3000/meals')
       if(!res.ok){}
   
       let meals = await res.json()

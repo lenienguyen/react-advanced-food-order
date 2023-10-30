@@ -3,7 +3,7 @@ import { useState } from "react"
 const useHttps = () => {
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
-    const endpoint = '/backend/data/available-meals.json'
+    const endpoint = 'http://localhost:3000/orders'
 
     const fetchData = async () => {
         try {
