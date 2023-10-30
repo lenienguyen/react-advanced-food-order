@@ -1,49 +1,45 @@
-import React, { Fragment, useContext } from 'react'
+import React, { useContext } from 'react'
 import CartContext from '../../store/CartContext'
 import Button from '../UI/Button'
+import Modal from '../UI/Modal'
+import UserProgressContext from '../../store/UserProgressContext'
+import { currencyFormatter } from '../../util/formatting'
+import Input from '../UI/Input'
 
 const Checkout = () => {
     const cartCtx = useContext(CartContext)
-  return (
-    <Fragment>
-        <form>
-            <h2>Checkout</h2>
-            <p>Total Amount ${cartCtx.totalAmount}</p>
+    const userProgressCtx = useContext(UserProgressContext)
 
-            <div className="control">
-                <label htmlFor="fullName">Full Name</label>
-                <input type="text" id="fullName" />
-            </div>
+    const cartTotal = cartCtx.items.reduce((totalPrice, item) => totalPrice + item.quantity * item.price, 0)
 
-            <div className="control">
-                <label htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" />
-            </div>
+    const closeCheckoutHandler = () => {
+        userProgressCtx.hideCheckout();
+    }
 
-            <div className="control">
-                <label htmlFor="street">Street</label>
-                <input type="text" id="street" />
-            </div>
+    return (
+        <Modal open={userProgressCtx.progress === 'checkout'} onClose={closeCheckoutHandler}>
+            <form>
+                <h2>Checkout</h2>
+                <p>Total Amount {currencyFormatter.format(cartTotal)}</p>
 
-            <div className="control-row">
-                <div className="control">
-                    <label htmlFor="postalCode">Postal code</label>
-                    <input type="number" id="postalCode" />
+                <Input label="Full Name" type="text" id="full-name"/>
+
+                <Input label="E-Mail Address" type="email" id="email"/>
+
+                <Input label="Street" type="text" id="street"/>
+
+                <div className="control-row">
+                    <Input label="Postal code" type="text" id="postal-code"/>
+                    <Input label="City" type="text" id="city"/>
                 </div>
 
-                <div className="control">
-                    <label htmlFor="city">City</label>
-                    <input type="text" id="city" />
+                <div className="modal-actions">
+                    <Button textOnly type="button" onClick={closeCheckoutHandler}>Close</Button>
+                    <Button type="submit">Submit Order</Button>
                 </div>
-            </div>
-
-            <div className="modal-actions">
-                <div className="text-button">Close</div>
-                <Button>Submit Order</Button>
-            </div>
-        </form>
-    </Fragment>
-  )
+            </form>
+        </Modal>
+    )
 }
 
 export default Checkout
