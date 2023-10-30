@@ -1,14 +1,18 @@
-import React from 'react'
+import { useEffect, useRef } from "react"
+import { createPortal } from "react-dom"
 
-const Modal = props => {
-    const modalClasses = `modal ${props.className}`
-  return (
-    <div className={modalClasses}>
-        {props.children}
-        {/* <div className="modal-actions">
-        </div> */}
-    </div>
+export default function Modal({ children, open, className = '' }){
+  const dialogRef = useRef();
+
+  useEffect(() => {
+    // check props
+    if(open){
+      dialogRef.current.showModal()
+    }
+  }, [open])
+
+  return createPortal(
+  <dialog ref={dialogRef} className={`modal ${className}`}>{children}</dialog>, 
+  document.getElementById('modal')
   )
 }
-
-export default Modal

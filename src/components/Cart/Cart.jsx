@@ -1,36 +1,32 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext } from 'react'
 import CartContext from '../../store/CartContext'
-import CartItem from './CartItem'
 import Button from '../UI/Button'
+import Modal from '../UI/Modal'
+import { currencyFormatter } from '../../util/formatting'
 
 const Cart = () => {
   const cartCtx = useContext(CartContext)
-  console.log(cartCtx)
 
   const { items } = cartCtx
+
+  const cartTotal = cartCtx.items.reduce((totalPrice, item) => totalPrice + item.quantity * item.price, 0)
+
   return (
-    <Fragment>
+    <Modal className="cart">
       <h2>Your cart</h2>
       <ul>
           {items.map(item => {
-            return (
-              <CartItem 
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              quantity={item.quantity}
-              />
-            )
+            <li key={item.id}>{item.name} - {item.quantity}</li>
           })}
       </ul>
 
-      <p className="cart-total">${cartCtx.totalAmount}</p>
+      <p className="cart-total">${currencyFormatter.format(cartTotal)}</p>
 
-      <div className="modal-actions">
-        <div className="text-button">Close</div>
+      <p className="modal-actions">
+        <Button textOnly>Close</Button>
         <Button>Go to checkout</Button>
-      </div>
-    </Fragment>
+      </p>
+    </Modal>
   )
 }
 
