@@ -14,7 +14,6 @@ const useHttps = () => {
             }
 
             let data = await res.json();
-            console.log('data', data)
 
             setData(data)
 

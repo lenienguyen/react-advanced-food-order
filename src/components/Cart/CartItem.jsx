@@ -1,17 +1,19 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { currencyFormatter } from '../../util/formatting'
 
-const CartItem = props => {
-  let price = parseFloat(props.price).toFixed(2)
+const CartItem = ({ name, quantity, price, onIncrease, onDecrease }) => {
 
   return (
-    <Fragment>
-      <li className="cart-item">
-        <p>{props.name} - {props.quantity} x ${price}</p>
-        <div className="cart-item-actions">
-          <button>-</button> 1 <button>+</button>
-        </div>
-      </li>
-    </Fragment>
+    <li className="cart-item">
+
+      <p>{name} - {quantity} x {currencyFormatter.format(price)}</p>
+
+      <p className="cart-item-actions">
+        <button onClick={onDecrease}>-</button>
+        <span>{quantity}</span>
+        <button onClick={onIncrease}>+</button>
+      </p>
+    </li>
   )
 }
 
