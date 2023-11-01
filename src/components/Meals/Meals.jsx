@@ -1,5 +1,6 @@
 import MealItem from './MealItem'
 import useHttp from '../../hooks/useHttp'
+import Error from '../Error/Error'
 
 const requestConfig = {}
 
@@ -10,10 +11,14 @@ const Meals = props => {
     isLoading 
   } = useHttp('http://localhost:3000/meals', requestConfig, [])
 
-  console.log(loadedMeals)
-
   if(isLoading){
-    return <p>Fetching meals...</p>
+    return <p className="center">Fetching meals...</p>
+  }
+
+  if(error){
+    return <Error 
+    title="Failted to fetch meals" 
+    message={error}/>
   }
 
   return (

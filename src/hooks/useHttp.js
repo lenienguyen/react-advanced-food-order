@@ -19,18 +19,24 @@ export default function useHttp(url, config, initialData){
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
-    const sendRequest = useCallback(async () => {
+
+    // Reset data (modal success)
+    const clearData = () => {
+        setData(initialData)
+    }
+
+    const sendRequest = useCallback(async (data) => {
         setIsLoading(true)
 
         try {
-            const resData = await sendHttpRequest(url, config);
+            const resData = await sendHttpRequest( url, {...config, body: data} );
             setData(resData)
         } catch (error) {
             setError(error.message || 'Something went wrong!')
         }
 
         setIsLoading(false)
-    }, [url,config])
+    }, [url, config])
     
 
     useEffect(() => {
@@ -39,5 +45,5 @@ export default function useHttp(url, config, initialData){
         }
     }, [sendRequest, config])
 
-    return { data, error, isLoading, sendRequest }
+    return { data, error, isLoading, sendRequest, clearData }
 }
