@@ -8,7 +8,6 @@ import Checkout from './components/Cart/Checkout';
 
 
 const App = () => {
-
   return (
     <UserProgressContextProvider>
       <CartContextProvider>

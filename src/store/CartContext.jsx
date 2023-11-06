@@ -13,6 +13,7 @@ const cartReducer = (state, action) => {
 
         const updatedItems = [...state.items]
 
+        // check if item already exists
         if(existingCartItemIndex > -1){
             const existingItem = state.items[existingCartItemIndex]
             const updatedItem = {
@@ -33,7 +34,6 @@ const cartReducer = (state, action) => {
 
         const existingCartItem = state.items[existingCartItemIndex]
 
-
         const updatedItems = [...state.items];
         if(existingCartItem.quantity === 1){
             /* const updatedItems = state.items.filter(item => item.id !== action.id) */
@@ -50,6 +50,7 @@ const cartReducer = (state, action) => {
         return { ...state, items: updatedItems }
     }
 
+    // checkout
     if(action.type === 'CLEAR_CART'){
         return { ...state, items: [] }
     }
